@@ -1,6 +1,6 @@
 <?php>
 
-  class Usuario extends AppModel {
+  class Usuarios extends AppModel {
     
     public $validate = array(
         'nomeCompleto' => array(
