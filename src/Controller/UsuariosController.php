@@ -108,7 +108,7 @@ class UsuariosController extends AppController
         if ($this->Usuarios->delete($usuario)) {
             $this->Flash->success(__('Usuário Removido'));
         } else {
-            $this->Flash->error(__('Este usuario está em uso,não pode ser removido));
+            $this->Flash->error(__('Este usuario está em uso,não pode ser removido'));
         }
 
         return $this->redirect(['action' => 'index']);
