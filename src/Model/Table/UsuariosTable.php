@@ -51,6 +51,10 @@ class UsuariosTable extends Table
             ->decimal('saldo')
             ->notEmptyString('saldo');
 
+        $validator
+            ->decimal('tipo_usuario')
+            ->notEmptyString('tipo_usuario');
+
         return $validator;
     }
 

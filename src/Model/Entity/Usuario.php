@@ -14,5 +14,6 @@ class Usuario extends Entity
         'email' => true,
         'senha' => true,
         'saldo' => true,
+        'tipo_usuario'=>true
     ];
 }
