@@ -25,6 +25,7 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('nome_completo') ?></th>
+                    <th><?= $this->Paginator->sort('código') ?></th>
                     <th><?= $this->Paginator->sort('cpf') ?></th>
                     <th><?= $this->Paginator->sort('cadastro') ?></th>
                 </tr>
@@ -33,6 +34,7 @@
                 <?php foreach ($usuarios as $usuario): ?>
                 <tr>
                     <td><?= h($usuario->nome_completo) ?></td>
+                    <td><?= h($usuario->id) ?></td>
                     <td><?= h($usuario->cpf) ?></td>
                     <td>
                         <?= $this->Html->link(__('VER EXTRATO'), ['action' => 'view',$usuario->id ], ['class' => 'button']) ?>
