@@ -49,6 +49,7 @@ class UsuariosController extends AppController
     public function transferencia()
     {
         $transferencia = $this->Transferencias->newEmptyEntity();
+        
         if ($this->request->is('post')) {
             $transferencia = $this->Transferencias->patchEntity($transferencia, $this->request->getData());
             $remetente = $this->Usuarios->get($transferencia->remetente);
@@ -81,6 +82,29 @@ class UsuariosController extends AppController
         }
 
         $this->set(compact('transferencia'));
+    }
+
+    public function extrato()
+    {
+        $dados = $this->Usuarios->find()
+                                ->select([
+                                    'nome_remetente' => 'usuarios.nome_completo',
+                                    'codigo_remetente' => 'transferencias.remetente',
+                                    'nome_destinatario' => 'destinatario.nome_completo',
+                                    'codigo_destinatario' => 'transferencias.destinatario',
+                                ])
+                                ->join([
+                                    'table' => 'transferencias',
+                                    'type' => 'INNER',
+                                    'conditions' => 'usuarios.id = transferencias.remetente'
+                                ])
+                                ->join([
+                                    'table' => 'usuarios',
+                                    'alias'=> 'destinatario',
+                                    'type' => 'INNER',
+                                    'conditions' => 'destinatario.id = transferencias.destinatario'
+                                ]);
+
     }
 
     public function edit($id = null)
