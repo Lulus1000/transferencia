@@ -1,0 +1,20 @@
+CREATE TABLE usuarios (
+id SERIAL PRIMARY KEY,
+  nome_completo VARCHAR(100) NOT NULL,
+  cpf VARCHAR(20) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha VARCHAR(100) NOT NULL,
+  saldo DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+  tipo_usuario INT NOT NULL,
+  CONSTRAINT cpf_email UNIQUE (cpf, email)
+);
+
+
+CREATE TABLE transferencias (
+  id SERIAL PRIMARY KEY,
+  id_remetente INT NOT NULL,
+  id_destinatario INT NOT NULL,
+  valor DECIMAL(10, 2) NOT NULL,
+  data_hora DATE 
+);
+
